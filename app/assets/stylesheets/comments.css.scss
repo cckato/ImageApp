@@ -1,0 +1,38 @@
+.comment-list-header span {
+  font-size: 22px;
+  font-weight: normal;
+  color: #444;
+}
+
+.comment-box {
+  background-color: #eee;
+  border-bottom: 1px solid #bbb;
+  padding: 10px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .commenter-image {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .com-main {
+    float: left;
+
+    .commenter-name {
+      margin-bottom: 2px;
+      a {
+        color: #000;
+        font-weight: bold;
+        &:hover {
+          color: red;
+        }
+      }
+      .comment-created-at {
+        color: #666;
+      }
+    }
+  }
+}

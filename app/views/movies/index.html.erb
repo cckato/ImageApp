@@ -1,0 +1,41 @@
+<h1>動画リスト</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>名前</th>
+    <th>サムネ</th>
+    <th>紹介</th>
+    <th>コメント数</th>
+    <th>投稿者</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.name %></td>
+        <td><%= link_to (image_tag movie.image_url(:thumb), class: "movie-thumb"), movie %></td>
+        <td><%= movie.intro %></td>
+        <td><%= movie.comments.count %></td>
+        <td>
+          <%= movie.user.name %>
+          <br>
+          <%= image_tag movie.user.image_url, width: "80px", class: "img-thumbnail" %>
+        </td>
+        <td>
+          <div class="btn-group">
+            <%= link_to 'Show', movie, class: "btn btn-default" %>
+            <%= link_to 'Edit', edit_movie_path(movie), class: "btn btn-default" if movie.user_id == current_user.id %>
+            <%= link_to 'Destroy', movie, method: :delete, data: {confirm: 'ほんとに消す?'}, class: "btn btn-default" if movie.user_id == current_user.id %>
+          </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '動画を投稿', new_movie_path, class: "btn btn-lg btn-primary" %>

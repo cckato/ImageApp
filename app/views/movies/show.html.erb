@@ -1,0 +1,62 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @movie.name %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @movie.image_url(:thumb_300x200) %>
+</p>
+
+<p>
+  <strong>Intro:</strong>
+  <%= @movie.intro %>
+</p>
+
+<p>
+  <strong>投稿者:</strong>
+  <%= @movie.user.name %>
+  <%= image_tag @movie.user.image_url(:thumb) %>
+</p>
+<% if @movie.user_id == current_user.id %>
+    <%= link_to '編集', edit_movie_path(@movie) %> |
+<% end %>
+<%= link_to '戻る', movies_path %>
+
+<div class="page-header">
+  <h2>コメントする</h2>
+</div>
+
+<%= form_for([@movie, @comment]) do |f| %>
+    <p>
+      <%= f.label :body %><br>
+      <%= f.text_area :body %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
+
+<div class="page-header">
+  <h2 class="comment-list-header">コメント一覧 <span>(<%= @movie.comments.count %>件)</span></h2>
+</div>
+<% @movie.comments.each do |comment| %>
+    <div class="comment-box clearfix">
+      <div class="commenter-image">
+        <%= image_tag comment.user.image_url(:thumb), width: "60px" %>
+      </div>
+      <div class="com-main">
+        <div class="commenter-name">
+          <%= link_to comment.user.name, comment.user %>
+          <span class="comment-created-at"><%= comment.created_at.localtime.strftime("%m月%d日 %H時%M分%S秒") %></span>
+        </div>
+        <div class="com-body"><%= comment.body %></div>
+      </div>
+    </div>
+<% end %>
+
+
+
+

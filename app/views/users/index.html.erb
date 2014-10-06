@@ -1,6 +1,6 @@
 <div class="page-header">
   <h1>ユーザーリスト</h1>
-  <p class="lead">ReplayBankを使う賢しい人々</p>
+  <p class="lead">わが愛妻たち</p>
 </div>
 
 <table class="table table-striped">
@@ -17,7 +17,7 @@
   <% @users.each do |user| %>
       <tr>
         <td><%= user.name %></td>
-        <td><%= image_tag user.image_url(:thumb) if user.image? %></td>
+        <td><%= link_to (image_tag user.image_url(:thumb)), user %></td>
         <td><%= user.intro %></td>
         <td>
           <div class="btn-group">

@@ -1,0 +1,8 @@
+@import "compass";
+
+.movie-thumb {
+  @include transition(opacity, 0.6s);
+  &:hover {
+    opacity: 0.5;
+  }
+}
