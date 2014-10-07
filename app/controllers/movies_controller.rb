@@ -1,5 +1,7 @@
 class MoviesController < ApplicationController
   before_action :check_login
+  skip_before_action :check_login, if: -> { request.format.json? }
+
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
 
   # GET /movies
