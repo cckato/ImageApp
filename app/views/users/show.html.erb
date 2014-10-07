@@ -1,14 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>名前：</strong>
   <%= @user.name %>
 </p>
 
 <p>
-  <strong>Image:</strong>
-  <%= image_tag @user.image_url %>
+  <strong>紹介：</strong>
+  <%= @user.intro %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p>
+  <strong>画像：</strong>
+  <%= image_tag @user.image_url(:thumb_300x200) %>
+</p>
+
+<%= link_to '編集', edit_user_path(@user) %> |
+<%= link_to '戻る', users_path %>

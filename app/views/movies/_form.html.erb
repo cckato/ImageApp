@@ -1,0 +1,35 @@
+<%= form_for(@movie, html: {class: 'form-horizontal'}) do |f| %>
+    <% if @movie.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:</h2>
+
+          <ul>
+            <% @movie.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name, class: "control-label col-sm-2" %>
+      <br>
+      <div class="col-sm-4"><%= f.text_field :name, class: "form-control" %></div>
+    </div>
+    <div class="form-group">
+      <%= f.label :image, class: "control-label col-sm-2" %>
+      <br>
+      <div class="col-sm-4"><%= f.file_field :image %></div>
+    </div>
+    <div class="form-group">
+      <%= f.label :intro, class: "control-label col-sm-2" %>
+      <br>
+      <div class="col-sm-4"><%= f.text_area :intro, class: "form-control" %></div>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :user_id %>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-4"><%= f.submit '投稿', class: "btn btn-primary" %></div>
+    </div>
+<% end %>

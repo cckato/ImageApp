@@ -1,0 +1,22 @@
+// Place all the styles related to the examples controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+.theme-showcase {
+
+}
+
+.grid-container{
+  [class*="col-"] {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+  }
+}
+
