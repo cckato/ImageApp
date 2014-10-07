@@ -1,4 +1,9 @@
 json.array!(@movies) do |movie|
-  json.extract! movie, :id, :name, :image, :intro, :user_id
-  json.url movie_url(movie, format: :json)
+  json.extract! movie, :id, :name, :intro, :user_id
+  json.image "http://" + request.host_with_port + movie.image_url(:thumb)
+  json.user do
+    json.name movie.user.name
+    json.image "http://" + request.host_with_port + movie.user.image_url(:thumb)
+  end
+  json.comments_count movie.comments.count
 end
