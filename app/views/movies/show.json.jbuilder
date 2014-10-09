@@ -6,7 +6,7 @@ json.set! :comments do
     json.user do
       json.id comment.user.id
       json.name comment.user.name
-      json.image comment.user.image_url(:thumb_300x200)
+      json.image "http://" + request.host_with_port + comment.user.image_url(:thumb_300x200)
     end
   end
 end
