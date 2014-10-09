@@ -13,9 +13,14 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
-    @comment = Comment.new
-    @comment.user_id = current_user.id
-    @comment.movie_id = @movie.id
+    respond_to do |format|
+      format.html {
+        @comment = Comment.new
+        @comment.user_id = current_user.id
+        @comment.movie_id = @movie.id
+      }
+      format.json {}
+    end
   end
 
   # GET /movies/new
